@@ -7,8 +7,9 @@ Documentation for the [Lecto Translation API](https://lecto.ai/) which provides 
 - Text/HTML/JSON translation
 - Multiple source texts and target languages in a single request.
 - Protected JSON values: Skip translations as desired with JSON data payload.
+- 90+ languages supported.
 
-For personalized integration support or private plans with higher quotas, please contact [support@lecto.ai](mailto:%73%75%70%70%6f%72%74%40%6c%65%63%74%6f%2e%61%69)
+For personalized integration support or private plans with higher quotas, please contact [support@lecto.ai](mailto:%73%75%70%70%6f%72%74%40%6c%65%63%74%6f%2e%61%69) or via Telegram @lectoai . Or hit us up on [Twitter @LectoAI](https://twitter.com/LectoAI)
 
 ## OpenAPI Documentation
 
