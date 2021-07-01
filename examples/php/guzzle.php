@@ -29,3 +29,11 @@ $response = $client->request('POST', '/v1/translate/text', [
 
 $body = $response->getBody();
 echo $body;
+
+/*
+Output:
+
+application/json
+{"texts":["Just try it mate.","What are you waiting for?"],"to":["de"],"from":"en"}
+{"translations":[{"to":"de", "translated":["Probieren Sie es einfach aus, Kumpel.", "Worauf wartest du?"]}], "from":"en", "translated_characters":42}
+*/
