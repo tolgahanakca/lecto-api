@@ -22,5 +22,5 @@ This API uses RapidAPI API Key for authentication. This API key must be sent as 
 Sample Request with RapidAPI API Key:
 
 ```bash
-curl "https://lecto-translation.p.rapidapi.com/v1/translate/text" -H 'X-Rapidapi-Key: <RapidAPI API Key>' -H 'Content-Type: application/json' -H 'Accept: application/json' --data-raw '{"texts":["Just try it mate.","What are you waiting for?"],"to":["zh-TW"],"from":"en"}' --compressed
+curl "https://lecto-translation.p.rapidapi.com/v1/translate/text" -H 'X-Rapidapi-Key: <RapidAPI API Key>' -H 'Content-Type: application/json' -H 'Accept: application/json' --data-raw '{"texts":["Just try it mate.","What are you waiting for?"],"to":["hi"],"from":"en"}' --compressed
 ```
