@@ -21,7 +21,7 @@ You can sign up to our site directly or access us via your RapidAPI subscription
 
 #### Direct Registration
 
-Firstly, [sign up to our Lecto Translation API Dashboard](https://dashboard.lecto.ai/docs). After signing up, you'll get access to your Personal API Key, which you can use to access our API right away. We provide a limited free trial for you to try out our API, after which you can subscribe to one of our generous [Pricing Plans](https://dashboard.lecto.ai/pricing). Our lowest pricing plan starts at just US\$1.99/month for 1 million translated characters per month.
+Firstly, [sign up to the Lecto Translation API Dashboard](https://dashboard.lecto.ai/docs). After signing up, you'll get access to your Personal API Key, which you can use to access the API right away. We provide a limited free trial for you to try out our API, after which you can subscribe to one of our [Pricing Plans](https://dashboard.lecto.ai/pricing). The lowest pricing plan starts at just US\$1.99/month for 1 million translated characters per month.
 
 You must send your API Key as the value of the header `X-API-Key`.
 
@@ -60,16 +60,34 @@ curl -i "https://lecto-translation.p.rapidapi.com/v1/translate/text" \
 
 We have provided several code samples to get you started with the Lecto Translation API.
 
-#### Python
+#### Python sample for API Key from Lecto Translation API Dashboard
 
-A sample python script based on the `requests` package is provided in `examples/python/request.py`.
+A sample python script based on the `requests` package is available at `examples/python/request.py`. This sample works with the API on our website.
 
 1. Install the `requests` package with `python -m pip install requests`
 
-2. Run our sample python script with:
+2. Run this sample python script with:
 
 ```sh
 API_KEY=<YOUR-API-KEY> python examples/python/request.py
 ```
 
 Note that the value of the `API_KEY` environment variable here is the API Key you obtained from the [Lecto Translation API Documentation](https://dashboard.lecto.ai/docs) in the previous section.
+
+#### PHP sample for Lecto Translation API RapidAPI offering
+
+A sample PHP script based on the `guzzle` HTTP client is available at `examples/php/guzzle.php`. This sample works with our RapidAPI offering.
+
+1. Install Guzzle using `composer` as per the [Installation instructions](https://docs.guzzlephp.org/en/stable/overview.html#installation) :
+
+```sh
+curl -sS https://getcomposer.org/installer | php
+cd examples/php
+composer require guzzlehttp/guzzle:^7.0
+```
+
+2. Run this sample PHP script from the root of this repo with your RapidAPI API Key.
+
+```sh
+RAPIDAPI_API_KEY=<RapidAPI API Key> php examples/php/guzzle.php
+```

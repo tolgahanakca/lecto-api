@@ -5,7 +5,7 @@ require 'vendor/autoload.php';
 use GuzzleHttp\Client;
 use GuzzleHttp\Middleware;
 
-$api_key = "<your-rapidapi-api-key>";
+$api_key = getenv('RAPIDAPI_API_KEY');
 
 $client = new Client([
     'base_uri' => 'https://lecto-translation.p.rapidapi.com',
