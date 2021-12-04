@@ -91,3 +91,21 @@ composer require guzzlehttp/guzzle:^7.0
 ```sh
 RAPIDAPI_API_KEY=<RapidAPI API Key> php examples/php/guzzle.php
 ```
+
+#### NodeJS Axios sample for Lecto Translation API RapidAPI offering
+
+A sample NodeJS script based on the `axios` HTTP client is available at `examples/nodejs/axios.js`. This sample works with our RapidAPI offering.
+
+This script also demonstrates the use of the alternative `content-type: application/x-www-form-urlencoded` POST request header which can be used to translate source texts with special characters, such as newline, tabs etc. This is unlike `content-type: application/json` POST request which requires escaping such characters.
+
+1. Install axios using `npm` as per the [Installation instructions](https://github.com/axios/axios#installing) :
+
+```sh
+npm install axios
+```
+
+2. Run this sample Node script from the root of this repo with your RapidAPI API Key.
+
+```sh
+RAPIDAPI_API_KEY=<RapidAPI API Key> node examples/nodejs/axios.js
+```
