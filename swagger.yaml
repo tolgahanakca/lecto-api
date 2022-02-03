@@ -1,7 +1,38 @@
 basePath: /
 consumes:
   - application/json
+  - application/x-www-form-urlencoded
 definitions:
+  account_info:
+    description: Shows account information
+    properties:
+      current_period_end:
+        description: UTC Timestamp when current subscription will end (RFC 3339)
+        example: "2022-03-03T03:24:36Z"
+        type: string
+      current_period_start:
+        description: UTC Timestamp when current subscription started (RFC 3339)
+        example: "2022-02-03T03:24:36Z"
+        type: string
+      plan:
+        description: Name of currently subscribed plan
+        example: SANDBOX
+        type: string
+      plan_status:
+        description: Subscription status of current plan
+        example: active
+        type: string
+      usage:
+        description: Usage for current subscription period, i.e. number of translated characters
+        example: 193729227
+        format: uint32
+        type: integer
+      usage_limit:
+        description: Usage limit for current subscription period after which overage pricing will apply
+        example: 750000000
+        format: uint32
+        type: integer
+    type: object
   error:
     description: error presents details of error responses
     properties:
@@ -99,7 +130,7 @@ definitions:
         example: German
         type: string
       language_code:
-        description: Supported language code, usually in `ISO 639-1` format, for example, `de`, `en`. May use `BCP-47` codes in some cases, for example, `zh-CN` and `zh-TW`.
+        description: Supported language code, usually in `ISO 639-1` format, for example, `de`, `en`. May use `ISO-639-2` or `BCP-47` codes in some cases, for example, `zh-CN` and `zh-TW`.
         example: de
         type: string
       support_source:
@@ -214,14 +245,28 @@ definitions:
           type: string
         type: array
     type: object
-host: lecto-translation.p.rapidapi.com
+host: api.lecto.ai
 info:
   description: |-
-    [Lecto Translation API](https://lecto.ai/?utm_source=docs&utm_medium=website&utm_campaign=developer-outreach) provides API endpoints for translation between 85+ source and target language pairs with multiple target languages supported in the same request.
+    [Lecto Translation API](https://dashboard.lecto.ai/signin?utm_source=docs&utm_medium=website&utm_campaign=developer-outreach) provides API endpoints for translation between 90+ source and target language pairs with multiple target languages supported in the same request.
 
     ## Authentication
 
-    This API uses RapidAPI API Key for authentication. This API key must be sent as the value of the header `X-Rapidapi-Key`. Sign up to Free Translation API trial for [Lecto Translation API at RapidAPI](https://rapidapi.com/lecto-lecto-default/api/lecto-translation/) to obtain your RapidAPI API Key which is authorized to access the Lecto Translation API.
+    This API uses either a custom API Key or the RapidAPI API Key for authentication.
+
+    ### Custom API Key
+
+    A custom API Key provided to you by the developer must be sent as the value of the header `X-API-Key`. Contact us at [support@rapidapi.com](mailto:support@rapidapi.com) for Translation API Free trial or to buy subscription plans.
+
+    Sample Request with Custom API Key:
+
+    ```
+    curl "https://api.lecto.ai/v1/translate/text" -H 'X-Rapidapi-Key: <Custom API Key>' -H 'Content-Type: application/json' -H 'Accept: application/json' --data-raw '{"texts":["Just try it mate.","What are you waiting for?"],"to":["zh-TW"],"from":"en"}' --compressed
+    ```
+
+    ### RapidAPI Authentication
+
+    RapidAPI API key must be sent as the value of the header `X-Rapidapi-Key`. Furthermore, the Base URL changes to `https://lecto-translation.p.rapidapi.com`. Sign up for a Free Translation API trial for [Lecto Translation API at RapidAPI](https://rapidapi.com/lecto-lecto-default/api/lecto-translation/) to obtain your RapidAPI API Key which is authorized to access the Lecto Translation API.
 
     Sample Request with RapidAPI API Key:
 
@@ -229,16 +274,144 @@ info:
     curl "https://lecto-translation.p.rapidapi.com/v1/translate/text" -H 'X-Rapidapi-Key: <RapidAPI API Key>' -H 'Content-Type: application/json' -H 'Accept: application/json' --data-raw '{"texts":["Just try it mate.","What are you waiting for?"],"to":["zh-TW"],"from":"en"}' --compressed
     ```
 
+    ## Language List
+    We support more than 90 languages at present as follows. The language codes presented are in `ISO-639-1` format unless stated otherwise below.
+
+    `af` - "Afrikaans"
+    `sq` - "Albanian"
+    `am` - "Amharic"
+    `ar` - "Arabic"
+    `hy` - "Armenian"
+    `az` - "Azerbaijani"
+    `be` - "Belarusian"
+    `bn` - "Bengali"
+    `bs` - "Bosnian"
+    `bg` - "Bulgarian"
+    `ca` - "Catalan"
+    `ceb` - "Cebuano" (ISO-639-2)
+    `zh-CN` - "Chinese (Simplified)" (BCP-47)
+    `zh-TW` - "Chinese (Traditional)" (BCP-47)
+    `hr` - "Croatian"
+    `cs` - "Czech"
+    `da` - "Danish"
+    `nl` - "Dutch"
+    `en` - "English"
+    `et` - "Estonian"
+    `tl` - "Filipino"
+    `fi` - "Finnish"
+    `fr` - "French"
+    `fy` - "Frisian"
+    `gl` - "Galician"
+    `ka` - "Georgian"
+    `de` - "German"
+    `el` - "Greek"
+    `gu` - "Gujarati"
+    `ht` - "Haitian Creole"
+    `ha` - "Hausa"
+    `he` - "Hebrew"
+    `hi` - "Hindi"
+    `hu` - "Hungarian"
+    `is` - "Icelandic"
+    `ig` - "Igbo"
+    `id` - "Indonesian"
+    `ga` - "Irish"
+    `it` - "Italian"
+    `ja` - "Japanese"
+    `kn` - "Kannada"
+    `kk` - "Kazakh"
+    `km` - "Khmer"
+    `ko` - "Korean"
+    `lo` - "Lao"
+    `lv` - "Latvian"
+    `lt` - "Lithuanian"
+    `lb` - "Luxembourgish"
+    `mk` - "Macedonian"
+    `mg` - "Malagasy"
+    `ms` - "Malay"
+    `ml` - "Malayalam"
+    `mr` - "Marathi"
+    `mn` - "Mongolian"
+    `my` - "Myanmar (Burmese)"
+    `ne` - "Nepali"
+    `no` - "Norwegian"
+    `or` - "Odia (Oriya)"
+    `ps` - "Pashto"
+    `fa` - "Persian"
+    `pl` - "Polish"
+    `pt` - "Portuguese"
+    `pt-BR` - "Portuguese (Brazil)" (BCP-47)
+    `pt-PT` - "Portuguese (Portugal)" (BCP-47)
+    `pa` - "Punjabi"
+    `ro` - "Romanian"
+    `ru` - "Russian"
+    `gd` - "Scots Gaelic"
+    `sr` - "Serbian"
+    `sd` - "Sindhi"
+    `si` - "Sinhala"
+    `sk` - "Slovak"
+    `sl` - "Slovenian"
+    `so` - "Somali"
+    `es` - "Spanish"
+    `su` - "Sundanese"
+    `sw` - "Swahili"
+    `sv` - "Swedish"
+    `ta` - "Tamil"
+    `th` - "Thai"
+    `tr` - "Turkish"
+    `uk` - "Ukrainian"
+    `ur` - "Urdu"
+    `uz` - "Uzbek"
+    `vi` - "Vietnamese"
+    `cy` - "Welsh"
+    `xh` - "Xhosa"
+    `yi` - "Yiddish"
+    `yo` - "Yoruba"
+    `zu` - "Zulu"
+
     ## Compression
     This API supports gzip compressed responses to save bandwidth on your client.  Send the optional `Accept-Encoding: gzip` header to receive gzip compressed responses.
 
     If this header is sent, then the API response will be gzip compressed and will include the `Content-Encoding: gzip` response header to indicate gzip compression.
 
     ## Support
-    For personalized integration support or private plans with higher quotas, contact support@lecto.ai
+    For personalized integration support or private plans with higher quotas, contact support@lecto.ai or via telegram @lectoai
   title: Lecto Translation API
   version: 1.0.0
 paths:
+  /v1/account/info:
+    get:
+      consumes:
+        - application/json
+      description: Get current API account plan, usage and subscription status information.
+      operationId: account_info
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: Account Information
+          schema:
+            $ref: '#/definitions/account_info'
+        "400":
+          description: bad request
+          schema:
+            $ref: '#/definitions/error'
+        "401":
+          description: unauthorized
+          schema:
+            $ref: '#/definitions/error'
+        "404":
+          description: not found
+          schema:
+            $ref: '#/definitions/error'
+        "429":
+          description: too many requests
+          schema:
+            $ref: '#/definitions/error'
+      schemes:
+        - https
+      summary: Get Account Information
+      tags:
+        - Account
   /v1/detect/text:
     post:
       consumes:
@@ -325,7 +498,7 @@ paths:
     get:
       consumes:
         - application/json
-      description: The list of languages returned includes language codes in `ISO 639-1` or `BCP-47` formats, as well as the human readable names of languages in English.
+      description: The list of languages returned includes language codes in `ISO 639-1`, `ISO-639-2` or `BCP-47` formats, as well as the human readable names of languages in English.
       operationId: get_languages
       produces:
         - application/json
@@ -403,7 +576,7 @@ schemes:
 securityDefinitions:
   ApiKeyAuth:
     in: header
-    name: X-Rapidapi-Key
+    name: X-API-Key
     type: apiKey
 swagger: "2.0"
 security:
