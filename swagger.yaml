@@ -16,7 +16,7 @@ definitions:
         type: string
       plan:
         description: Name of currently subscribed plan
-        example: SANDBOX
+        example: BUSINESS
         type: string
       plan_status:
         description: Subscription status of current plan
