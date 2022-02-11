@@ -284,6 +284,7 @@ info:
     `hy` - "Armenian"
     `az` - "Azerbaijani"
     `be` - "Belarusian"
+    `bel` - "Belarusian" (ISO-639-2)
     `bn` - "Bengali"
     `bs` - "Bosnian"
     `bg` - "Bulgarian"
@@ -334,6 +335,7 @@ info:
     `my` - "Myanmar (Burmese)"
     `ne` - "Nepali"
     `no` - "Norwegian"
+    `nb` - "Norwegian (Bokmål)"
     `or` - "Odia (Oriya)"
     `ps` - "Pashto"
     `fa` - "Persian"
