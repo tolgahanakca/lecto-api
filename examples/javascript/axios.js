@@ -1,4 +1,7 @@
-var axios = require("axios").default;
+// Install axios with npm install axios
+// Run with RAPIDAPI_API_KEY=<RapidAPI API Key> node examples/javascript/axios.js
+
+const axios = require("axios").default;
 const url = require("url");
 
 const params = new url.URLSearchParams();
