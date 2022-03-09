@@ -114,6 +114,8 @@ RAPIDAPI_API_KEY=<RapidAPI API Key> node examples/javascript/axios.js
 
 ##### Fetch
 
+###### NodeJS
+
 We use `node-fetch` for NodeJS as `fetch` is not available natively in NodeJS.
 If you are using `fetch` client side (i.e. in a browser), then `fetch` is available natively and there is no need to import `node-fetch`.
 
@@ -126,5 +128,9 @@ npm install node-fetch@2
 2. Run this sample Node script from the root of this repo with your RapidAPI API Key.
 
 ```sh
-RAPIDAPI_API_KEY=<RapidAPI API Key> node examples/javascript/fetch.js
+RAPIDAPI_API_KEY=<RapidAPI API Key> node examples/javascript/fetch_node.js
 ```
+
+###### Client-side (browser)
+
+For a pure browser (client-side) example of using the Browser `fetch` API, please refer to `examples/javascript/fetch_browser.js`. You must replace `<YOUR_API_KEY>` in the sample with your actual RapidAPI API key.

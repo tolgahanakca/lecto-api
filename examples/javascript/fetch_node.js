@@ -1,8 +1,8 @@
 // We use node-fetch for NodeJS as fetch is not available natively in NodeJS
 // If you are using fetch client side (i.e. in a browser)
-// then fetch is available natively and there is no need to require node-fetch
+// then see `fetch_browser.js` instead
 // If you're in NodeJS, install node-fetch with npm install node-fetch@2
-// Run with RAPIDAPI_API_KEY=<RapidAPI API Key> node examples/javascript/fetch.js
+// Run with RAPIDAPI_API_KEY=<RapidAPI API Key> node examples/javascript/fetch_node.js
 
 const fetch = require("node-fetch");
 const url = require("url");
