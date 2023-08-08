@@ -1,6 +1,6 @@
 applications:
 - api_domain: rapidapi.com
-  application_name: api-2
+  application_name: api-26541
   authentication_mode: non-authenticated
   exclude_paths: []
   target_url: .jit/swagger.yaml
